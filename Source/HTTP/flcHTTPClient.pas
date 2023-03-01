@@ -1924,6 +1924,9 @@ var
   R_Connect : Boolean;
   R_IsActive : Boolean;
 begin
+  R_Ready := False;
+  R_Connect := False;
+  R_IsActive := False;
   Lock;
   try
     // check state

@@ -1819,6 +1819,8 @@ var NewLineChars : PByteCharSet;
     P, Q : Int64;
     Fin  : Boolean;
 begin
+  Fin := True;
+
   if EOLTypes = [] then
     begin
       Result := False;

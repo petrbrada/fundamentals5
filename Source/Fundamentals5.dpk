@@ -1,0 +1,164 @@
+package Fundamentals5;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl;
+
+contains
+  flcASCII in 'Utils\flcASCII.pas',
+  flcBase64 in 'Utils\flcBase64.pas',
+  flcBits32 in 'Utils\flcBits32.pas',
+  flcDataStructArrays in 'Utils\flcDataStructArrays.pas',
+  flcDataStructMaps in 'Utils\flcDataStructMaps.pas',
+  flcDataStructs in 'Utils\flcDataStructs.pas',
+  flcDateTime in 'Utils\flcDateTime.pas',
+  flcDateTimeZone in 'Utils\flcDateTimeZone.pas',
+  flcDecimal in 'Utils\flcDecimal.pas',
+  flcDynArrays in 'Utils\flcDynArrays.pas',
+  flcFileUtils in 'Utils\flcFileUtils.pas',
+  flcFloats in 'Utils\flcFloats.pas',
+  flcHash in 'Utils\flcHash.pas',
+  flcHashGeneral in 'Utils\flcHashGeneral.pas',
+  flcHugeInt in 'Utils\flcHugeInt.pas',
+  flcCharSet in 'Utils\flcCharSet.pas',
+  flcInteger in 'Utils\flcInteger.pas',
+  flcJSON in 'Utils\flcJSON.pas',
+  flcRandom in 'Utils\flcRandom.pas',
+  flcStdTypes in 'Utils\flcStdTypes.pas',
+  flcStreams in 'Utils\flcStreams.pas',
+  flcStringBuilder in 'Utils\flcStringBuilder.pas',
+  flcStringPatternMatcher in 'Utils\flcStringPatternMatcher.pas',
+  flcStrings in 'Utils\flcStrings.pas',
+  flcSysUtils in 'Utils\flcSysUtils.pas',
+  flcTimers in 'Utils\flcTimers.pas',
+  flcUnicodeCodecs in 'Utils\flcUnicodeCodecs.pas',
+  flcUnicodeChar in 'Utils\flcUnicodeChar.pas',
+  flcUnicodeReader in 'Utils\flcUnicodeReader.pas',
+  flcUnicodeStrings in 'Utils\flcUnicodeStrings.pas',
+  flcUTF in 'Utils\flcUTF.pas',
+  flcUtils in 'Utils\flcUtils.pas',
+  flcZeroTermStrings in 'Utils\flcZeroTermStrings.pas',
+  flcProfileHugeInt in 'Utils\Profile\flcProfileHugeInt.pas',
+  flcTestDataStructArrays in 'Utils\Test\flcTestDataStructArrays.pas',
+  flcTestDataStructMaps in 'Utils\Test\flcTestDataStructMaps.pas',
+  flcTestHashGeneral in 'Utils\Test\flcTestHashGeneral.pas',
+  flcTestHugeInt in 'Utils\Test\flcTestHugeInt.pas',
+  flcTestStdTypes in 'Utils\Test\flcTestStdTypes.pas',
+  flcTestUtils in 'Utils\Test\flcTestUtils.pas',
+  flcUtilsTest in 'Utils\Test\flcUtilsTest.pas',
+  flcWinUtils in 'Utils\Win\flcWinUtils.pas',
+  flcEncodingASN1 in 'Crypto\flcEncodingASN1.pas',
+  flcCryptoUtils in 'Crypto\flcCryptoUtils.pas',
+  flcCryptoRandom in 'Crypto\flcCryptoRandom.pas',
+  flcCryptoHash in 'Crypto\flcCryptoHash.pas',
+  flcCipherUtils in 'Crypto\flcCipherUtils.pas',
+  flcCipherTest in 'Crypto\flcCipherTest.pas',
+  flcCipherRSA in 'Crypto\flcCipherRSA.pas',
+  flcCipherRC4 in 'Crypto\flcCipherRC4.pas',
+  flcCipherRC2 in 'Crypto\flcCipherRC2.pas',
+  flcCipherRandom in 'Crypto\flcCipherRandom.pas',
+  flcCipherEllipticCurve in 'Crypto\flcCipherEllipticCurve.pas',
+  flcCipherDH in 'Crypto\flcCipherDH.pas',
+  flcCipherDES in 'Crypto\flcCipherDES.pas',
+  flcCipherAES in 'Crypto\flcCipherAES.pas',
+  flcCipher in 'Crypto\flcCipher.pas',
+  flcCertificateX509 in 'Crypto\flcCertificateX509.pas',
+  flcCertificatePEM in 'Crypto\flcCertificatePEM.pas',
+  flcTestCertificatePEM in 'Crypto\Test\flcTestCertificatePEM.pas',
+  flcTestCertificateX509 in 'Crypto\Test\flcTestCertificateX509.pas',
+  flcTestCrypto in 'Crypto\Test\flcTestCrypto.pas',
+  flcTestCryptoHash in 'Crypto\Test\flcTestCryptoHash.pas',
+  flcTestCryptoUtils in 'Crypto\Test\flcTestCryptoUtils.pas',
+  flcTestEncodingASN1 in 'Crypto\Test\flcTestEncodingASN1.pas',
+  flcHTTPClient in 'HTTP\flcHTTPClient.pas',
+  flcHTTPServer in 'HTTP\flcHTTPServer.pas',
+  flcHTTPTests in 'HTTP\flcHTTPTests.pas',
+  flcHTTPUtils in 'HTTP\flcHTTPUtils.pas',
+  flcTCPBuffer in 'TCP\flcTCPBuffer.pas',
+  flcTCPClient in 'TCP\flcTCPClient.pas',
+  flcTCPConnection in 'TCP\flcTCPConnection.pas',
+  flcTCPServer in 'TCP\flcTCPServer.pas',
+  flcTCPServerUtils in 'TCP\flcTCPServerUtils.pas',
+  flcTCPUtils in 'TCP\flcTCPUtils.pas',
+  flcTCPTest_Buffer in 'TCP\Tests\flcTCPTest_Buffer.pas',
+  flcTCPTest_Client in 'TCP\Tests\flcTCPTest_Client.pas',
+  flcTCPTest_ClientServer in 'TCP\Tests\flcTCPTest_ClientServer.pas',
+  flcTCPTest_ClientServerTLS in 'TCP\Tests\flcTCPTest_ClientServerTLS.pas',
+  flcTCPTest_ClientTLS in 'TCP\Tests\flcTCPTest_ClientTLS.pas',
+  flcTCPTest_Server in 'TCP\Tests\flcTCPTest_Server.pas',
+  flcTCPTest_ServerTLS in 'TCP\Tests\flcTCPTest_ServerTLS.pas',
+  flcTCPTests in 'TCP\Tests\flcTCPTests.pas',
+  flcSocket in 'Sockets\flcSocket.pas',
+  flcSocketLib in 'Sockets\flcSocketLib.pas',
+  flcSocketLibSys in 'Sockets\flcSocketLibSys.pas',
+  flcComplex in 'Maths\flcComplex.pas',
+  flcMaths in 'Maths\flcMaths.pas',
+  flcMatrix in 'Maths\flcMatrix.pas',
+  flcRational in 'Maths\flcRational.pas',
+  flcStatistics in 'Maths\flcStatistics.pas',
+  flcVectors in 'Maths\flcVectors.pas',
+  flcProtoBufProtoCodeGenPascal in 'ProtocolBuffers\flcProtoBufProtoCodeGenPascal.pas',
+  flcProtoBufProtoNodes in 'ProtocolBuffers\flcProtoBufProtoNodes.pas',
+  flcProtoBufProtoParser in 'ProtocolBuffers\flcProtoBufProtoParser.pas',
+  flcProtoBufProtoParserTests in 'ProtocolBuffers\flcProtoBufProtoParserTests.pas',
+  flcProtoBufUtils in 'ProtocolBuffers\flcProtoBufUtils.pas',
+  pbTest1Messages in 'ProtocolBuffers\Examples\Output\pbTest1Messages.pas',
+  pbTestImport1Messages in 'ProtocolBuffers\Examples\Output\pbTestImport1Messages.pas',
+  flcTLSAlert in 'TLS\flcTLSAlert.pas',
+  flcTLSAlgorithmTypes in 'TLS\flcTLSAlgorithmTypes.pas',
+  flcTLSBuffer in 'TLS\flcTLSBuffer.pas',
+  flcTLSCertificate in 'TLS\flcTLSCertificate.pas',
+  flcTLSCipher in 'TLS\flcTLSCipher.pas',
+  flcTLSCipherSuite in 'TLS\flcTLSCipherSuite.pas',
+  flcTLSCompress in 'TLS\flcTLSCompress.pas',
+  flcTLSConsts in 'TLS\flcTLSConsts.pas',
+  flcTLSErrors in 'TLS\flcTLSErrors.pas',
+  flcTLSHandshake in 'TLS\flcTLSHandshake.pas',
+  flcTLSHandshakeExtension in 'TLS\flcTLSHandshakeExtension.pas',
+  flcTLSKeyExchangeParams in 'TLS\flcTLSKeyExchangeParams.pas',
+  flcTLSKeys in 'TLS\flcTLSKeys.pas',
+  flcTLSOpaqueEncoding in 'TLS\flcTLSOpaqueEncoding.pas',
+  flcTLSPRF in 'TLS\flcTLSPRF.pas',
+  flcTLSProtocolVersion in 'TLS\flcTLSProtocolVersion.pas',
+  flcTLSRandom in 'TLS\flcTLSRandom.pas',
+  flcTLSRecord in 'TLS\flcTLSRecord.pas',
+  flcTLSSessionID in 'TLS\flcTLSSessionID.pas',
+  flcTLSTestCertificates in 'TLS\flcTLSTestCertificates.pas',
+  flcTLSTests in 'TLS\flcTLSTests.pas',
+  flcTLSTransportClient in 'TLS\flcTLSTransportClient.pas',
+  flcTLSTransportConnection in 'TLS\flcTLSTransportConnection.pas',
+  flcTLSTransportServer in 'TLS\flcTLSTransportServer.pas',
+  flcTLSTransportTypes in 'TLS\flcTLSTransportTypes.pas',
+  flcUDP in 'UDP\flcUDP.pas',
+  flcXMLDocument in 'XMLParser\flcXMLDocument.pas',
+  flcXMLFunctions in 'XMLParser\flcXMLFunctions.pas',
+  flcXMLParser in 'XMLParser\flcXMLParser.pas';
+
+end.
+

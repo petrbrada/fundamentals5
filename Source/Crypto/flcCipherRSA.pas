@@ -1228,6 +1228,7 @@ function RSAEncrypt(
 var
   EncodedMsg, CipherMsg : HugeWord;
 begin
+  Result := 0;
   // validate
   if (PublicKey.KeyBits <= 0) or
      (PublicKey.KeyBits mod HugeWordElementBits <> 0) then
@@ -1335,6 +1336,7 @@ function RSADecrypt(
 var
   CipherMsg, EncodedMsg : HugeWord;
 begin
+  Result := 0;
   // validate
   if (PrivateKey.KeyBits <= 0) or
      (PrivateKey.KeyBits mod HugeWordElementBits <> 0) then
@@ -1683,6 +1685,7 @@ var
   Digest : T512BitDigest;
   DigSize : Integer;
 begin
+  Result := False;
   // validate
   if (PublicKey.KeyBits <= 0) or
      (PublicKey.KeyBits mod HugeWordElementBits <> 0) then

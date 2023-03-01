@@ -2456,6 +2456,7 @@ var
   IsProxy : Boolean;
 begin
   Result := 0;
+  IsProxy := False;
   if BufSize <= 0 then
     exit;
   Lock;

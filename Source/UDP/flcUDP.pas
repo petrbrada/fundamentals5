@@ -987,6 +987,7 @@ var
   Packet : PUDPPacket;
   Len : Int32;
 begin
+  Result := 0;
   Lock;
   try
     if not UDPBufferIsEmpty(FReadBuffer) then

@@ -1,0 +1,305 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{BA539EE2-F78D-4D0D-AD4B-3DDA9E76553E}</ProjectGuid>
+        <MainSource>Fundamentals5.dpk</MainSource>
+        <ProjectVersion>14.4</ProjectVersion>
+        <FrameworkType>VCL</FrameworkType>
+        <Base>True</Base>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <AppType>Package</AppType>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='OSX32' and '$(Base)'=='true') or '$(Base_OSX32)'!=''">
+        <Base_OSX32>true</Base_OSX32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
+        <Cfg_1_Win32>true</Cfg_1_Win32>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='OSX32' and '$(Cfg_2)'=='true') or '$(Cfg_2_OSX32)'!=''">
+        <Cfg_2_OSX32>true</Cfg_2_OSX32>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <DCC_DUPLICATE_CTOR_DTOR>false</DCC_DUPLICATE_CTOR_DTOR>
+        <VerInfo_Locale>1029</VerInfo_Locale>
+        <GenPackage>true</GenPackage>
+        <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
+        <GenDll>true</GenDll>
+        <DCC_DcuOutput>..\dcu</DCC_DcuOutput>
+        <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
+        <DCC_E>false</DCC_E>
+        <DCC_N>false</DCC_N>
+        <DCC_S>false</DCC_S>
+        <DCC_F>false</DCC_F>
+        <DCC_K>false</DCC_K>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_OSX32)'!=''">
+        <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+        <DCC_DebugDCUs>true</DCC_DebugDCUs>
+        <DCC_Optimize>false</DCC_Optimize>
+        <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+        <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+        <DCC_RemoteDebug>true</DCC_RemoteDebug>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <DCC_RemoteDebug>false</DCC_RemoteDebug>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+        <DCC_DebugInformation>false</DCC_DebugInformation>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_OSX32)'!=''">
+        <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
+    </PropertyGroup>
+    <ItemGroup>
+        <DelphiCompile Include="$(MainSource)">
+            <MainSource>MainSource</MainSource>
+        </DelphiCompile>
+        <DCCReference Include="rtl.dcp"/>
+        <DCCReference Include="Utils\flcASCII.pas"/>
+        <DCCReference Include="Utils\flcBase64.pas"/>
+        <DCCReference Include="Utils\flcBits32.pas"/>
+        <DCCReference Include="Utils\flcDataStructArrays.pas"/>
+        <DCCReference Include="Utils\flcDataStructMaps.pas"/>
+        <DCCReference Include="Utils\flcDataStructs.pas"/>
+        <DCCReference Include="Utils\flcDateTime.pas"/>
+        <DCCReference Include="Utils\flcDateTimeZone.pas"/>
+        <DCCReference Include="Utils\flcDecimal.pas"/>
+        <DCCReference Include="Utils\flcDynArrays.pas"/>
+        <DCCReference Include="Utils\flcFileUtils.pas"/>
+        <DCCReference Include="Utils\flcFloats.pas"/>
+        <DCCReference Include="Utils\flcHash.pas"/>
+        <DCCReference Include="Utils\flcHashGeneral.pas"/>
+        <DCCReference Include="Utils\flcHugeInt.pas"/>
+        <DCCReference Include="Utils\flcCharSet.pas"/>
+        <DCCReference Include="Utils\flcInteger.pas"/>
+        <DCCReference Include="Utils\flcJSON.pas"/>
+        <DCCReference Include="Utils\flcRandom.pas"/>
+        <DCCReference Include="Utils\flcStdTypes.pas"/>
+        <DCCReference Include="Utils\flcStreams.pas"/>
+        <DCCReference Include="Utils\flcStringBuilder.pas"/>
+        <DCCReference Include="Utils\flcStringPatternMatcher.pas"/>
+        <DCCReference Include="Utils\flcStrings.pas"/>
+        <DCCReference Include="Utils\flcSysUtils.pas"/>
+        <DCCReference Include="Utils\flcTimers.pas"/>
+        <DCCReference Include="Utils\flcUnicodeCodecs.pas"/>
+        <DCCReference Include="Utils\flcUnicodeChar.pas"/>
+        <DCCReference Include="Utils\flcUnicodeReader.pas"/>
+        <DCCReference Include="Utils\flcUnicodeStrings.pas"/>
+        <DCCReference Include="Utils\flcUTF.pas"/>
+        <DCCReference Include="Utils\flcUtils.pas"/>
+        <DCCReference Include="Utils\flcZeroTermStrings.pas"/>
+        <DCCReference Include="Utils\Profile\flcProfileHugeInt.pas"/>
+        <DCCReference Include="Utils\Test\flcTestDataStructArrays.pas"/>
+        <DCCReference Include="Utils\Test\flcTestDataStructMaps.pas"/>
+        <DCCReference Include="Utils\Test\flcTestHashGeneral.pas"/>
+        <DCCReference Include="Utils\Test\flcTestHugeInt.pas"/>
+        <DCCReference Include="Utils\Test\flcTestStdTypes.pas"/>
+        <DCCReference Include="Utils\Test\flcTestUtils.pas"/>
+        <DCCReference Include="Utils\Test\flcUtilsTest.pas"/>
+        <DCCReference Include="Utils\Win\flcWinUtils.pas"/>
+        <DCCReference Include="Crypto\flcEncodingASN1.pas"/>
+        <DCCReference Include="Crypto\flcCryptoUtils.pas"/>
+        <DCCReference Include="Crypto\flcCryptoRandom.pas"/>
+        <DCCReference Include="Crypto\flcCryptoHash.pas"/>
+        <DCCReference Include="Crypto\flcCipherUtils.pas"/>
+        <DCCReference Include="Crypto\flcCipherTest.pas"/>
+        <DCCReference Include="Crypto\flcCipherRSA.pas"/>
+        <DCCReference Include="Crypto\flcCipherRC4.pas"/>
+        <DCCReference Include="Crypto\flcCipherRC2.pas"/>
+        <DCCReference Include="Crypto\flcCipherRandom.pas"/>
+        <DCCReference Include="Crypto\flcCipherEllipticCurve.pas"/>
+        <DCCReference Include="Crypto\flcCipherDH.pas"/>
+        <DCCReference Include="Crypto\flcCipherDES.pas"/>
+        <DCCReference Include="Crypto\flcCipherAES.pas"/>
+        <DCCReference Include="Crypto\flcCipher.pas"/>
+        <DCCReference Include="Crypto\flcCertificateX509.pas"/>
+        <DCCReference Include="Crypto\flcCertificatePEM.pas"/>
+        <DCCReference Include="Crypto\Test\flcTestCertificatePEM.pas"/>
+        <DCCReference Include="Crypto\Test\flcTestCertificateX509.pas"/>
+        <DCCReference Include="Crypto\Test\flcTestCrypto.pas"/>
+        <DCCReference Include="Crypto\Test\flcTestCryptoHash.pas"/>
+        <DCCReference Include="Crypto\Test\flcTestCryptoUtils.pas"/>
+        <DCCReference Include="Crypto\Test\flcTestEncodingASN1.pas"/>
+        <DCCReference Include="HTTP\flcHTTPClient.pas"/>
+        <DCCReference Include="HTTP\flcHTTPServer.pas"/>
+        <DCCReference Include="HTTP\flcHTTPTests.pas"/>
+        <DCCReference Include="HTTP\flcHTTPUtils.pas"/>
+        <DCCReference Include="TCP\flcTCPBuffer.pas"/>
+        <DCCReference Include="TCP\flcTCPClient.pas"/>
+        <DCCReference Include="TCP\flcTCPConnection.pas"/>
+        <DCCReference Include="TCP\flcTCPServer.pas"/>
+        <DCCReference Include="TCP\flcTCPServerUtils.pas"/>
+        <DCCReference Include="TCP\flcTCPUtils.pas"/>
+        <DCCReference Include="TCP\Tests\flcTCPTest_Buffer.pas"/>
+        <DCCReference Include="TCP\Tests\flcTCPTest_Client.pas"/>
+        <DCCReference Include="TCP\Tests\flcTCPTest_ClientServer.pas"/>
+        <DCCReference Include="TCP\Tests\flcTCPTest_ClientServerTLS.pas"/>
+        <DCCReference Include="TCP\Tests\flcTCPTest_ClientTLS.pas"/>
+        <DCCReference Include="TCP\Tests\flcTCPTest_Server.pas"/>
+        <DCCReference Include="TCP\Tests\flcTCPTest_ServerTLS.pas"/>
+        <DCCReference Include="TCP\Tests\flcTCPTests.pas"/>
+        <DCCReference Include="Sockets\flcSocket.pas"/>
+        <DCCReference Include="Sockets\flcSocketLib.pas"/>
+        <DCCReference Include="Sockets\flcSocketLibSys.pas"/>
+        <DCCReference Include="Maths\flcComplex.pas"/>
+        <DCCReference Include="Maths\flcMaths.pas"/>
+        <DCCReference Include="Maths\flcMatrix.pas"/>
+        <DCCReference Include="Maths\flcRational.pas"/>
+        <DCCReference Include="Maths\flcStatistics.pas"/>
+        <DCCReference Include="Maths\flcVectors.pas"/>
+        <DCCReference Include="ProtocolBuffers\flcProtoBufProtoCodeGenPascal.pas"/>
+        <DCCReference Include="ProtocolBuffers\flcProtoBufProtoNodes.pas"/>
+        <DCCReference Include="ProtocolBuffers\flcProtoBufProtoParser.pas"/>
+        <DCCReference Include="ProtocolBuffers\flcProtoBufProtoParserTests.pas"/>
+        <DCCReference Include="ProtocolBuffers\flcProtoBufUtils.pas"/>
+        <DCCReference Include="ProtocolBuffers\Examples\Output\pbTest1Messages.pas"/>
+        <DCCReference Include="ProtocolBuffers\Examples\Output\pbTestImport1Messages.pas"/>
+        <DCCReference Include="TLS\flcTLSAlert.pas"/>
+        <DCCReference Include="TLS\flcTLSAlgorithmTypes.pas"/>
+        <DCCReference Include="TLS\flcTLSBuffer.pas"/>
+        <DCCReference Include="TLS\flcTLSCertificate.pas"/>
+        <DCCReference Include="TLS\flcTLSCipher.pas"/>
+        <DCCReference Include="TLS\flcTLSCipherSuite.pas"/>
+        <DCCReference Include="TLS\flcTLSCompress.pas"/>
+        <DCCReference Include="TLS\flcTLSConsts.pas"/>
+        <DCCReference Include="TLS\flcTLSErrors.pas"/>
+        <DCCReference Include="TLS\flcTLSHandshake.pas"/>
+        <DCCReference Include="TLS\flcTLSHandshakeExtension.pas"/>
+        <DCCReference Include="TLS\flcTLSKeyExchangeParams.pas"/>
+        <DCCReference Include="TLS\flcTLSKeys.pas"/>
+        <DCCReference Include="TLS\flcTLSOpaqueEncoding.pas"/>
+        <DCCReference Include="TLS\flcTLSPRF.pas"/>
+        <DCCReference Include="TLS\flcTLSProtocolVersion.pas"/>
+        <DCCReference Include="TLS\flcTLSRandom.pas"/>
+        <DCCReference Include="TLS\flcTLSRecord.pas"/>
+        <DCCReference Include="TLS\flcTLSSessionID.pas"/>
+        <DCCReference Include="TLS\flcTLSTestCertificates.pas"/>
+        <DCCReference Include="TLS\flcTLSTests.pas"/>
+        <DCCReference Include="TLS\flcTLSTransportClient.pas"/>
+        <DCCReference Include="TLS\flcTLSTransportConnection.pas"/>
+        <DCCReference Include="TLS\flcTLSTransportServer.pas"/>
+        <DCCReference Include="TLS\flcTLSTransportTypes.pas"/>
+        <DCCReference Include="UDP\flcUDP.pas"/>
+        <DCCReference Include="XMLParser\flcXMLDocument.pas"/>
+        <DCCReference Include="XMLParser\flcXMLFunctions.pas"/>
+        <DCCReference Include="XMLParser\flcXMLParser.pas"/>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+        <Borland.ProjectType>Package</Borland.ProjectType>
+        <BorlandProject>
+            <Delphi.Personality>
+                <Source>
+                    <Source Name="MainSource">Fundamentals5.dpk</Source>
+                </Source>
+                <VersionInfo>
+                    <VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+                    <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+                    <VersionInfo Name="MajorVer">1</VersionInfo>
+                    <VersionInfo Name="MinorVer">0</VersionInfo>
+                    <VersionInfo Name="Release">0</VersionInfo>
+                    <VersionInfo Name="Build">0</VersionInfo>
+                    <VersionInfo Name="Debug">False</VersionInfo>
+                    <VersionInfo Name="PreRelease">False</VersionInfo>
+                    <VersionInfo Name="Special">False</VersionInfo>
+                    <VersionInfo Name="Private">False</VersionInfo>
+                    <VersionInfo Name="DLL">False</VersionInfo>
+                    <VersionInfo Name="Locale">1029</VersionInfo>
+                    <VersionInfo Name="CodePage">1250</VersionInfo>
+                </VersionInfo>
+                <VersionInfoKeys>
+                    <VersionInfoKeys Name="CompanyName"/>
+                    <VersionInfoKeys Name="FileDescription"/>
+                    <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+                    <VersionInfoKeys Name="InternalName"/>
+                    <VersionInfoKeys Name="LegalCopyright"/>
+                    <VersionInfoKeys Name="LegalTrademarks"/>
+                    <VersionInfoKeys Name="OriginalFilename"/>
+                    <VersionInfoKeys Name="ProductName"/>
+                    <VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+                    <VersionInfoKeys Name="Comments"/>
+                    <VersionInfoKeys Name="CFBundleName"/>
+                    <VersionInfoKeys Name="CFBundleDisplayName"/>
+                    <VersionInfoKeys Name="CFBundleIdentifier"/>
+                    <VersionInfoKeys Name="CFBundleVersion"/>
+                    <VersionInfoKeys Name="CFBundlePackageType"/>
+                    <VersionInfoKeys Name="CFBundleSignature"/>
+                    <VersionInfoKeys Name="CFBundleAllowMixedLocalizations"/>
+                    <VersionInfoKeys Name="CFBundleExecutable"/>
+                </VersionInfoKeys>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\DataExplorerDBXPlugin170.bpl">DBExpress Data Explorer Integration</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclDBXDrivers170.bpl">Embarcadero Driver Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclDBXDriversInt170.bpl">Embarcadero Intro Driver Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\DataExplorerDBXPluginEnt170.bpl">DBExpress Enterprise Data Explorer Integration</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclDBXDriversEnt170.bpl">Embarcadero Enterprise Driver Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\10.0\Bpl\VirtualTreesD7D.bpl">Virtual Treeview</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k170.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp170.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                </Excluded_Packages>
+            </Delphi.Personality>
+            <Deployment/>
+            <Platforms>
+                <Platform value="OSX32">False</Platform>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">False</Platform>
+            </Platforms>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+</Project>

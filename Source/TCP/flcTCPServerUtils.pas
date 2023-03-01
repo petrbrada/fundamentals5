@@ -868,6 +868,7 @@ begin
     exit;
   LReady := False;
   LEvent := FReadyEvent;
+  LClient := nil;
   repeat
     // wait until client list not empty
     case LEvent.WaitFor(2000) of
